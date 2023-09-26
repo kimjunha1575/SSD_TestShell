@@ -65,7 +65,6 @@ int main()
         char fullcmd[MAX_FULLCMD_LEN] = {0};
 
         char LBA[4] = {0}, value[16] = {0};
-        int value_type = 0;
         switch (c_mode)
         {
         case READ:
@@ -112,6 +111,7 @@ int main()
                 for (int i = 0; i < STORAGE_SIZE; i++)
                 {
                     // render command and execute
+                    sprintf(params, "%d", i);
                     makeFullCmd(fullcmd, params, READ);
                     system(fullcmd);
 
@@ -129,14 +129,15 @@ int main()
 
         case FULLWRITE:
             // if command is valid
-            value_type = isValidValue(params);
-            if (value_type)
+            if (isValidValue(params))
             {
                 // for every LBA
                 for (int i = 0; i < STORAGE_SIZE; i++)
                 {
                     // render command and execute
-                    makeFullCmd(fullcmd, params, WRITE);
+                    char p[48];
+                    sprintf(p, "%d %s", i, params);
+                    makeFullCmd(fullcmd, p, WRITE);
                     system(fullcmd);
                 }
             }
@@ -257,6 +258,12 @@ void makeFullCmd(char *fullcmd, char params[48], command_mode c_mode)
         sprintf(fullcmd, "%s R %s", SSD_EXEC_FILE, params);
         break;
     case WRITE:
+        sprintf(fullcmd, "%s W %s", SSD_EXEC_FILE, params);
+        break;
+    case FULLREAD:
+        sprintf(fullcmd, "%s R %s", SSD_EXEC_FILE, params);
+        break;
+    case FULLWRITE:
         sprintf(fullcmd, "%s W %s", SSD_EXEC_FILE, params);
         break;
     default:
