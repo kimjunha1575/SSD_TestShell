@@ -1,0 +1,15 @@
+
+    Usage:  write [LBA] [value]
+            read [LBA]
+            fullwrite [value]
+            fullread
+            exit
+            help
+
+    LBA:
+        SSD's LBA number
+
+    value:
+        10-digit hexadecimal number 
+        ex) 0xABCDFFFF 0x0123FFAB
+
