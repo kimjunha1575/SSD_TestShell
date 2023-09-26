@@ -269,5 +269,4 @@ void makeFullCmd(char *fullcmd, char params[48], command_mode c_mode)
     default:
         break;
     }
-    printf("%s\n", fullcmd);
 }
