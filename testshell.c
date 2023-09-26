@@ -119,7 +119,7 @@ int main()
                     uint32_t value;
                     FILE *fp = fopen(RESULT_FILE, "r");
                     fread(&value, sizeof(uint32_t), 1, fp);
-                    printf("LBA[%d]: 0x%X\n", i, value);
+                    printf("LBA[%d]: 0x%.8X\n", i, value);
                     fclose(fp);
                 }
             }
