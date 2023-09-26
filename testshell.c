@@ -77,9 +77,11 @@ int main()
 
                 // print result
                 uint32_t value;
+                int idx;
+                sscanf(params, "%d", &idx);
                 FILE *fp = fopen(RESULT_FILE, "r");
                 fread(&value, sizeof(uint32_t), 1, fp);
-                printf("0x%.8X\n", value);
+                printf("LBA[%02d]: 0x%.8X\n", idx, value);
                 fclose(fp);
             }
             // else print error message
@@ -119,7 +121,7 @@ int main()
                     uint32_t value;
                     FILE *fp = fopen(RESULT_FILE, "r");
                     fread(&value, sizeof(uint32_t), 1, fp);
-                    printf("LBA[%d]: 0x%.8X\n", i, value);
+                    printf("LBA[%02d]: 0x%.8X\n", i, value);
                     fclose(fp);
                 }
             }
