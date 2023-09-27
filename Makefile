@@ -1,8 +1,13 @@
 NAME	=	testshell
 
-SRCS	=	testshell.c	\
+SRCSPATH= 	srcs
+SRCS	=	main.c	\
+			shell.c	\
 
-OBJS	=	${SRCS:.c=.o}
+CFILES	=	${addprefix ${SRCSPATH}/, ${SRCS}}
+OBJS	=	${CFILES:.c=.o}
+
+INC		=	includes
 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -12,7 +17,7 @@ REMOVE	=	rm -f
 all:		${NAME}
 
 %.o : %.c
-			${CC} ${CFLAGS} -c $< -o $@
+			${CC} ${CFLAGS} -c $< -o $@ -I ${INC}
 
 ${NAME}:	${OBJS}
 			${CC} ${OBJS} -o ${NAME}
