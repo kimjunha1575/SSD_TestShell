@@ -18,6 +18,14 @@ typedef enum mode { NONE, READ, WRITE, FULLREAD, FULLWRITE, HELP, EXIT } command
 
 int isValidLBA(char *LBA);
 int isValidValue(char *value);
+/*TODO
+void read();
+void write();
+void fullRead();
+void fullWrite();
+void testApp1();
+void testApp2();
+*/
 void prtHelp();
 void prtError();
 void split(char input[MAX_INPUT_LEN], char command[MAX_COMMAND_LEN], char params[MAX_PARAMS_LEN]);

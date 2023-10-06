@@ -72,3 +72,12 @@ command_mode check_command(char *command) {
     else
         return NONE;
 }
+
+/*TODO
+void read() {}
+void write() {}
+void fullRead() {}
+void fullWrite() {}
+void testApp1() {}
+void testApp2() {}
+*/
